@@ -1,0 +1,78 @@
+
+close("*");
+
+setBatchMode(true);
+
+//Generate Target Positions
+
+groupSize = 4;
+
+xScale = 1200;
+yScale = 1200;
+
+xSquares = 8;
+ySquares = 8;
+
+colourArray = newArray("red","green","blue","yellow");
+
+newImage("Background", "RGB black", xScale, yScale , 1);
+
+rectWidth = xScale/groupSize;
+rectHeight = yScale;
+
+for(i=0;i<groupSize;i++){
+
+xPosition=rectWidth*i;
+yPosition=0;
+
+setColor(colourArray[i]);
+
+makeRectangle(xPosition,yPosition,rectWidth,rectHeight);
+
+fill();
+
+}
+
+
+for(i=1;i<ySquares;i++){
+
+xPosition=0;
+yPosition = (yScale/ySquares)*i;
+
+setColor("white");
+makeRectangle(xPosition,yPosition,xScale,10);
+fill();
+
+}
+
+for(i=1;i<xSquares;i++){
+
+xPosition=(xScale/xSquares)*i;
+yPosition = 0;
+
+setColor("white");
+makeRectangle(xPosition,yPosition,10,yScale);
+fill();
+
+}
+
+
+
+
+run("Select All");
+
+run("Subtract...", "value=100");
+
+
+
+
+
+
+
+run("Canvas Size...", "width=1400 height=1400 position=Center zero");
+
+
+
+
+setBatchMode("show");
+
